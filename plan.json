@@ -1,0 +1,166 @@
+{
+  "name": "EXAMPLE Push / Pull / Legs template — replace with the real plan",
+  "example": true,
+  "source": "Placeholder. See README 'Swapping in the real plan'.",
+  "days": {
+    "mon": {
+      "title": "Push (EXAMPLE)",
+      "exercises": [
+        {
+          "name": "Barbell bench press",
+          "bodyPart": "chest",
+          "sets": 4,
+          "reps": "6-8"
+        },
+        {
+          "name": "Overhead press",
+          "bodyPart": "shoulders",
+          "sets": 3,
+          "reps": "8-10"
+        },
+        {
+          "name": "Incline dumbbell press",
+          "bodyPart": "chest",
+          "sets": 3,
+          "reps": "8-12"
+        },
+        {
+          "name": "Dumbbell lateral raise",
+          "bodyPart": "shoulders",
+          "sets": 3,
+          "reps": "12-15"
+        },
+        {
+          "name": "Cable triceps pushdown",
+          "bodyPart": "arms",
+          "sets": 3,
+          "reps": "10-15"
+        }
+      ]
+    },
+    "tue": {
+      "title": "Pull (EXAMPLE)",
+      "exercises": [
+        {
+          "name": "Deadlift",
+          "bodyPart": "back",
+          "sets": 3,
+          "reps": "5"
+        },
+        {
+          "name": "Lat pulldown",
+          "bodyPart": "back",
+          "sets": 3,
+          "reps": "8-12"
+        },
+        {
+          "name": "Barbell row",
+          "bodyPart": "back",
+          "sets": 3,
+          "reps": "8-10"
+        },
+        {
+          "name": "Face pull",
+          "bodyPart": "shoulders",
+          "sets": 3,
+          "reps": "15"
+        },
+        {
+          "name": "Dumbbell curl",
+          "bodyPart": "arms",
+          "sets": 3,
+          "reps": "10-12"
+        }
+      ]
+    },
+    "wed": {
+      "title": "Legs (EXAMPLE)",
+      "exercises": [
+        {
+          "name": "Back squat",
+          "bodyPart": "legs",
+          "sets": 4,
+          "reps": "6-8"
+        },
+        {
+          "name": "Romanian deadlift",
+          "bodyPart": "legs",
+          "sets": 3,
+          "reps": "8-10"
+        },
+        {
+          "name": "Leg curl",
+          "bodyPart": "legs",
+          "sets": 3,
+          "reps": "10-12"
+        },
+        {
+          "name": "Standing calf raise",
+          "bodyPart": "legs",
+          "sets": 4,
+          "reps": "10-15"
+        },
+        {
+          "name": "Plank",
+          "bodyPart": "core",
+          "sets": 3,
+          "reps": "30-60s"
+        }
+      ]
+    },
+    "thu": {
+      "title": "Treadmill (EXAMPLE)",
+      "cardio": "30 min incline walk"
+    },
+    "fri": {
+      "title": "Push (EXAMPLE)",
+      "exercises": [
+        {
+          "name": "Barbell bench press",
+          "bodyPart": "chest",
+          "sets": 4,
+          "reps": "6-8"
+        },
+        {
+          "name": "Overhead press",
+          "bodyPart": "shoulders",
+          "sets": 3,
+          "reps": "8-10"
+        },
+        {
+          "name": "Cable triceps pushdown",
+          "bodyPart": "arms",
+          "sets": 3,
+          "reps": "10-15"
+        }
+      ]
+    },
+    "sat": {
+      "title": "Pull + Legs (EXAMPLE)",
+      "exercises": [
+        {
+          "name": "Pull-up",
+          "bodyPart": "back",
+          "sets": 3,
+          "reps": "6-10"
+        },
+        {
+          "name": "Back squat",
+          "bodyPart": "legs",
+          "sets": 3,
+          "reps": "8"
+        },
+        {
+          "name": "Hammer curl",
+          "bodyPart": "arms",
+          "sets": 3,
+          "reps": "10-12"
+        }
+      ]
+    },
+    "sun": {
+      "title": "Rest (EXAMPLE)",
+      "notes": "Easy walk optional."
+    }
+  }
+}

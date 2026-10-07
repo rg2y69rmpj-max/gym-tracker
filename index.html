@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f1115">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Gym">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<title>Gym Tracker</title>
+</head>
+<body>
+<header><h1 id="title">Today</h1><input type="date" id="date" aria-label="Date"></header>
+<main>
+  <!-- TODAY / PLAN -->
+  <section id="v-today" class="view">
+    <div class="card" id="todaySummary"></div>
+    <div class="card"><h2>Water &amp; steps</h2>
+      <div class="row"><button class="grow" data-water="250">+250 ml</button><button class="grow" data-water="500">+500 ml</button><button class="grow" data-water="-250">−250 ml</button></div>
+      <form class="row" id="stepsForm"><label class="grow">Steps today<input name="steps" type="number" inputmode="numeric" min="0" step="1"></label><button class="primary sm">Save steps</button></form>
+    </div>
+    <div class="card" id="trendBox"></div>
+    <div class="card"><h2>Today's plan</h2><div id="planBox">Loading plan…</div></div>
+  </section>
+
+  <!-- WORKOUT -->
+  <section id="v-workout" class="view" hidden>
+    <div class="card">
+      <label>Body part
+        <div class="row"><select id="wPart"></select><button class="ghost sm" id="addPart" type="button">+ Custom</button></div></label>
+      <label>Exercise
+        <input id="wEx" list="exList" placeholder="Pick or type a new exercise" autocomplete="off"></label>
+      <datalist id="exList"></datalist>
+      <div id="prevBox" class="muted small"></div>
+      <div class="row">
+        <label class="grow">Weight (kg)<input id="wKg" type="number" inputmode="decimal" step="0.5" min="0"></label>
+        <label class="grow">Reps<input id="wReps" type="number" inputmode="numeric" step="1" min="0"></label>
+      </div>
+      <div class="row">
+        <button id="addSet" class="primary grow">Add set</button>
+        <button id="repeatSet" class="grow">↻ Repeat last set</button>
+      </div>
+    </div>
+    <div class="card"><h2>Sets on this day</h2><div id="setList"></div></div>
+  </section>
+
+  <!-- CARDIO -->
+  <section id="v-cardio" class="view" hidden>
+    <form class="card" id="tForm">
+      <div class="row"><label class="grow">Duration (min)<input name="duration" type="number" inputmode="decimal" step="any" required></label>
+      <label class="grow">Distance (km)<input name="distance" type="number" inputmode="decimal" step="any"></label></div>
+      <div class="row"><label class="grow">Speed (km/h)<input name="speed" type="number" inputmode="decimal" step="any"></label>
+      <label class="grow">Incline (%)<input name="incline" type="number" inputmode="decimal" step="any"></label></div>
+      <label>Calories (optional)<input name="calories" type="number" inputmode="numeric" step="any"></label>
+      <button class="primary">Add treadmill session</button>
+    </form>
+    <div class="card"><h2>Treadmill sessions</h2><div id="tList"></div></div>
+  </section>
+
+  <!-- MEALS -->
+  <section id="v-meals" class="view" hidden>
+    <div class="card" id="mealTotals"></div>
+    <form class="card" id="mForm">
+      <label>Meal<input name="name" required placeholder="e.g. Chicken &amp; rice" list="mealNames" autocomplete="off"></label>
+      <datalist id="mealNames"></datalist>
+      <div class="row"><label class="grow">Calories<input name="calories" type="number" inputmode="numeric" step="any" required></label>
+      <label class="grow">Protein (g)<input name="protein" type="number" inputmode="decimal" step="any" required></label>
+      <label class="grow">Time<input name="time" type="time"></label></div>
+      <div class="row"><label class="grow">Carbs (g)<input name="carbs" type="number" inputmode="decimal" step="any" placeholder="0"></label>
+      <label class="grow">Fat (g)<input name="fat" type="number" inputmode="decimal" step="any" placeholder="0"></label>
+      <label class="grow">Fibre (g)<input name="fibre" type="number" inputmode="decimal" step="any" placeholder="0"></label></div>
+      <button class="primary">Add meal</button>
+    </form>
+    <div class="card"><h2>Meals on this day</h2><div id="mList"></div></div>
+  </section>
+
+  <!-- WEIGHT -->
+  <section id="v-weight" class="view" hidden>
+    <form class="card" id="bwForm"><div class="row"><label class="grow">Body weight (kg)<input name="kg" type="number" inputmode="decimal" step="0.1" required placeholder="kg"></label>
+      <button class="primary">Log</button></div></form>
+    <div class="card" id="trendBox2"></div>
+    <div class="card"><canvas id="cBwSmall"></canvas></div>
+    <div class="card"><h2>History</h2><div id="bwList"></div></div>
+  </section>
+
+  <!-- PROGRESS -->
+  <section id="v-progress" class="view" hidden>
+    <div class="card"><h2>Strength</h2><select id="pEx"></select><canvas id="cEx"></canvas><div id="pExNote" class="muted small"></div></div>
+    <div class="card"><h2>Weekly volume (kg × reps)</h2><canvas id="cVol"></canvas></div>
+    <div class="card"><h2>Calories vs target</h2><canvas id="cCal"></canvas></div>
+    <div class="card"><h2>Protein vs target</h2><canvas id="cPro"></canvas></div>
+    <div class="card"><h2>Body weight</h2><canvas id="cBw"></canvas></div>
+    <div class="card"><h2>Treadmill</h2><div id="tTotals"></div><canvas id="cTm"></canvas></div>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="v-settings" class="view" hidden>
+    <form class="card" id="sForm">
+      <h2>Daily targets</h2>
+      <div class="row"><label class="grow">Calories<input name="calTarget" type="number" inputmode="numeric"></label>
+      <label class="grow">Protein (g)<input name="proteinTarget" type="number" inputmode="numeric"></label></div>
+      <div class="row"><label class="grow">Carbs (g)<input name="carbTarget" type="number" inputmode="numeric"></label>
+      <label class="grow">Fat (g)<input name="fatTarget" type="number" inputmode="numeric"></label>
+      <label class="grow">Fibre ≥ (g)<input name="fibreTarget" type="number" inputmode="numeric"></label></div>
+      <div class="row"><label class="grow">Water (L)<input name="waterTarget" type="number" inputmode="decimal" step="0.1"></label>
+      <label class="grow">Steps min<input name="stepsMin" type="number" inputmode="numeric"></label>
+      <label class="grow">Steps max<input name="stepsMax" type="number" inputmode="numeric"></label></div>
+      <h2>Carb cycling</h2>
+      <label class="check"><input type="checkbox" name="carbCycling"> Use day-type calorie targets (from the plan)</label>
+      <div class="row"><label class="grow">Weights day kcal<input name="calWeightDay" type="number" inputmode="numeric"></label>
+      <label class="grow">Treadmill/rest kcal<input name="calOtherDay" type="number" inputmode="numeric"></label></div>
+      <h2>Weight goal (loss per week, 7-day avg)</h2>
+      <div class="row"><label class="grow">Min kg/wk<input name="lossMin" type="number" inputmode="decimal" step="0.05"></label>
+      <label class="grow">Max kg/wk<input name="lossMax" type="number" inputmode="decimal" step="0.05"></label></div>
+      <label>Plan file<select name="planFile"><option value="plan.json">plan.json</option><option value="plan.recomp.json">plan.recomp.json (from team/gym-plan.md)</option></select></label>
+      <button class="primary">Save settings</button>
+    </form>
+    <div class="card"><h2>Exercises</h2><div id="exManage"></div></div>
+    <div class="card"><h2>Data</h2>
+      <div class="row"><button id="exportBtn" class="grow">Export JSON</button><label class="btn grow">Import JSON<input type="file" id="importFile" accept="application/json,.json" hidden></label></div>
+      <button id="wipeBtn" class="danger">Delete all data</button>
+      <p class="muted small">Data lives only on this device (localStorage). Export regularly as a backup.</p>
+    </div>
+  </section>
+</main>
+<nav id="tabs">
+  <button data-v="today" class="on">🏠<span>Today</span></button>
+  <button data-v="workout">🏋️<span>Lift</span></button>
+  <button data-v="cardio">🏃<span>Cardio</span></button>
+  <button data-v="meals">🍗<span>Meals</span></button>
+  <button data-v="weight">⚖️<span>Weight</span></button>
+  <button data-v="progress">📈<span>Progress</span></button>
+  <button data-v="settings">⚙️<span>More</span></button>
+</nav>
+<div id="toast" hidden></div>
+<script src="logic.js"></script>
+<script src="charts.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

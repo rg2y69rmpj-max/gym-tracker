@@ -1,0 +1,212 @@
+{
+  "name": "Recomp Program v1",
+  "example": false,
+  "source": "hand-converted program",
+  "days": {
+    "mon": {
+      "title": "Chest (+ triceps finisher)",
+      "notes": "Warm up 5 min treadmill + 2 ramp-up sets. Rest 2–3 min compounds, 60–90 s isolation.",
+      "exercises": [
+        {
+          "name": "Barbell bench press",
+          "bodyPart": "chest",
+          "sets": 4,
+          "reps": "6-8",
+          "note": "RIR 2"
+        },
+        {
+          "name": "Incline dumbbell press",
+          "bodyPart": "chest",
+          "sets": 3,
+          "reps": "8-10"
+        },
+        {
+          "name": "Cable chest fly",
+          "bodyPart": "chest",
+          "sets": 3,
+          "reps": "12-15",
+          "note": "machine or cable"
+        },
+        {
+          "name": "Weighted dips",
+          "bodyPart": "chest",
+          "sets": 3,
+          "reps": "8-12",
+          "note": "or assisted"
+        },
+        {
+          "name": "Cable triceps pushdown",
+          "bodyPart": "arms",
+          "sets": 3,
+          "reps": "12-15"
+        }
+      ]
+    },
+    "tue": {
+      "title": "Treadmill: Zone 2",
+      "cardio": "35–45 min conversational pace (60–70% max HR): fast walk on 6–10% incline or easy jog. +5 min every 2 weeks, up to 60."
+    },
+    "wed": {
+      "title": "Back (+ biceps finisher)",
+      "notes": "Warm up 5 min treadmill + 2 ramp-up sets.",
+      "exercises": [
+        {
+          "name": "Deadlift",
+          "bodyPart": "back",
+          "sets": 3,
+          "reps": "5-6",
+          "note": "or RDL, RIR 2"
+        },
+        {
+          "name": "Lat pulldown",
+          "bodyPart": "back",
+          "sets": 4,
+          "reps": "6-10",
+          "note": "or pull-ups"
+        },
+        {
+          "name": "Barbell row",
+          "bodyPart": "back",
+          "sets": 3,
+          "reps": "8-10",
+          "note": "or chest-supported"
+        },
+        {
+          "name": "Seated cable row",
+          "bodyPart": "back",
+          "sets": 3,
+          "reps": "10-12"
+        },
+        {
+          "name": "Face pull",
+          "bodyPart": "shoulders",
+          "sets": 3,
+          "reps": "15"
+        },
+        {
+          "name": "Dumbbell curl",
+          "bodyPart": "arms",
+          "sets": 3,
+          "reps": "10-12"
+        }
+      ]
+    },
+    "thu": {
+      "title": "Treadmill: Intervals",
+      "cardio": "5 min warm-up, 8–10 × (1 min hard @8/10 + 2 min easy walk), 5 min cool-down. Swap to incline-walk intervals if legs feel heavy."
+    },
+    "fri": {
+      "title": "Legs",
+      "notes": "Warm up 5 min treadmill + 2 ramp-up sets.",
+      "exercises": [
+        {
+          "name": "Back squat",
+          "bodyPart": "legs",
+          "sets": 4,
+          "reps": "6-8",
+          "note": "RIR 2"
+        },
+        {
+          "name": "Romanian deadlift",
+          "bodyPart": "legs",
+          "sets": 3,
+          "reps": "8-10",
+          "note": "or leg press 3×10–12 if heavy deadlift Wed"
+        },
+        {
+          "name": "Bulgarian split squat",
+          "bodyPart": "legs",
+          "sets": 3,
+          "reps": "10",
+          "note": "each leg, or walking lunges"
+        },
+        {
+          "name": "Leg curl",
+          "bodyPart": "legs",
+          "sets": 3,
+          "reps": "10-12"
+        },
+        {
+          "name": "Leg extension",
+          "bodyPart": "legs",
+          "sets": 2,
+          "reps": "12-15"
+        },
+        {
+          "name": "Standing calf raise",
+          "bodyPart": "legs",
+          "sets": 4,
+          "reps": "10-15"
+        },
+        {
+          "name": "Hanging knee raise",
+          "bodyPart": "core",
+          "sets": 3,
+          "reps": "10-15",
+          "note": "or plank"
+        }
+      ]
+    },
+    "sat": {
+      "title": "Shoulders + Arms",
+      "notes": "Warm up 5 min treadmill + 2 ramp-up sets.",
+      "exercises": [
+        {
+          "name": "Overhead press",
+          "bodyPart": "shoulders",
+          "sets": 4,
+          "reps": "6-8"
+        },
+        {
+          "name": "Dumbbell lateral raise",
+          "bodyPart": "shoulders",
+          "sets": 4,
+          "reps": "12-20"
+        },
+        {
+          "name": "Rear delt fly",
+          "bodyPart": "shoulders",
+          "sets": 3,
+          "reps": "15"
+        },
+        {
+          "name": "EZ-bar curl",
+          "bodyPart": "arms",
+          "sets": 3,
+          "reps": "8-10",
+          "note": "superset with skull crushers"
+        },
+        {
+          "name": "Skull crusher",
+          "bodyPart": "arms",
+          "sets": 3,
+          "reps": "8-10",
+          "note": "or close-grip bench"
+        },
+        {
+          "name": "Incline dumbbell curl",
+          "bodyPart": "arms",
+          "sets": 2,
+          "reps": "12",
+          "note": "superset with overhead cable extension"
+        },
+        {
+          "name": "Overhead cable extension",
+          "bodyPart": "arms",
+          "sets": 2,
+          "reps": "12"
+        },
+        {
+          "name": "Hammer curl",
+          "bodyPart": "arms",
+          "sets": 2,
+          "reps": "12"
+        }
+      ]
+    },
+    "sun": {
+      "title": "Rest",
+      "notes": "Optional easy walk. Aim for 8–10k steps daily."
+    }
+  }
+}
