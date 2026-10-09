@@ -34,3 +34,10 @@ nav button span{font-size:10px}nav button.on{color:var(--acc)}
 label.check{display:flex;align-items:center;gap:10px;color:var(--fg);font-size:15px}label.check input{width:22px;min-height:22px;margin:0}
 .pill.bad{background:rgba(255,92,108,.15);color:var(--bad)}
 #sForm>button.primary{position:sticky;bottom:calc(64px + env(safe-area-inset-bottom));z-index:2;box-shadow:0 -6px 16px rgba(0,0,0,.5)}
+.nudge{border:1px solid rgba(90,169,255,.35);background:rgba(90,169,255,.08)}.nudge p{margin:0 0 8px}.nudge .row>*{margin-bottom:0}
+.restore{border:1px solid var(--warn);border-radius:12px;padding:12px;margin:4px 0 10px}.restore h3{font-size:15px;margin:0 0 6px}.restore p{margin:6px 0}
+.restore table{width:100%;border-collapse:collapse;margin:6px 0}.restore td,.restore th{text-align:left;padding:5px 4px;border-top:1px solid var(--line);font-weight:normal}.restore th{color:var(--muted);border-top:0}
+.restore .row>*{margin-bottom:0}.err-t{color:var(--bad)}
+.flag{border:1px solid rgba(255,179,71,.4)}.flag p{margin:4px 0 8px}.flag .row>*{margin-bottom:0}
+.reasons{margin:6px 0;padding-left:18px}.reasons li{margin:2px 0}
+#calBox button,#calBox2 button{margin-top:6px}

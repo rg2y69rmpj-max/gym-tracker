@@ -20,17 +20,22 @@
 <main>
   <!-- TODAY / PLAN -->
   <section id="v-today" class="view">
+    <div class="card nudge small" id="backupNudge" hidden></div>
+    <div id="flagsBox"></div>
     <div class="card" id="todaySummary"></div>
-    <div class="card"><h2>Water &amp; steps</h2>
+    <div class="card"><h2>Water, steps &amp; sleep</h2>
       <div class="row"><button class="grow" data-water="250">+250 ml</button><button class="grow" data-water="500">+500 ml</button><button class="grow" data-water="-250">−250 ml</button></div>
       <form class="row" id="stepsForm"><label class="grow">Steps today<input name="steps" type="number" inputmode="numeric" min="0" step="1"></label><button class="primary sm">Save steps</button></form>
+      <form class="row" id="sleepForm"><label class="grow">Sleep last night (hours)<input name="hours" type="number" inputmode="decimal" min="0" max="24" step="0.25" placeholder="e.g. 7.5"></label><button class="primary sm">Save sleep</button></form>
     </div>
     <div class="card" id="trendBox"></div>
+    <div class="card" id="calBox"></div>
     <div class="card"><h2>Today's plan</h2><div id="planBox">Loading plan…</div></div>
   </section>
 
   <!-- WORKOUT -->
   <section id="v-workout" class="view" hidden>
+    <div class="card nudge small" id="deloadNote" hidden></div>
     <div class="card">
       <label>Body part
         <div class="row"><select id="wPart"></select><button class="ghost sm" id="addPart" type="button">+ Custom</button></div></label>
@@ -85,7 +90,13 @@
     <form class="card" id="bwForm"><div class="row"><label class="grow">Body weight (kg)<input name="kg" type="number" inputmode="decimal" step="0.1" required placeholder="kg"></label>
       <button class="primary">Log</button></div></form>
     <div class="card" id="trendBox2"></div>
+    <div class="card" id="calBox2"></div>
     <div class="card"><canvas id="cBwSmall"></canvas></div>
+    <form class="card" id="waistForm"><h2>Waist (weekly)</h2>
+      <p class="muted small">Once a week, first thing in the morning, tape level with your navel.</p>
+      <div class="row"><label class="grow">Waist (cm)<input name="cm" type="number" inputmode="decimal" step="0.1" min="30" max="250" required placeholder="cm"></label>
+      <button class="primary">Log waist</button></div>
+      <div id="waistList"></div></form>
     <div class="card"><h2>History</h2><div id="bwList"></div></div>
   </section>
 
@@ -96,6 +107,8 @@
     <div class="card"><h2>Calories vs target</h2><canvas id="cCal"></canvas></div>
     <div class="card"><h2>Protein vs target</h2><canvas id="cPro"></canvas></div>
     <div class="card"><h2>Body weight</h2><canvas id="cBw"></canvas></div>
+    <div class="card"><h2>Waist (cm)</h2><canvas id="cWaist"></canvas><div id="waistNote" class="muted small"></div></div>
+    <div class="card"><h2>Sleep (hours)</h2><canvas id="cSleep"></canvas><div id="sleepNote" class="muted small"></div></div>
     <div class="card"><h2>Treadmill</h2><div id="tTotals"></div><canvas id="cTm"></canvas></div>
   </section>
 
@@ -111,6 +124,7 @@
       <div class="row"><label class="grow">Water (L)<input name="waterTarget" type="number" inputmode="decimal" step="0.1"></label>
       <label class="grow">Steps min<input name="stepsMin" type="number" inputmode="numeric"></label>
       <label class="grow">Steps max<input name="stepsMax" type="number" inputmode="numeric"></label></div>
+      <div class="row"><label class="grow">Sleep ≥ (hours)<input name="sleepTarget" type="number" inputmode="decimal" step="0.25"></label></div>
       <h2>Carb cycling</h2>
       <label class="check"><input type="checkbox" name="carbCycling"> Use day-type calorie targets (from the plan)</label>
       <div class="row"><label class="grow">Weights day kcal<input name="calWeightDay" type="number" inputmode="numeric"></label>
@@ -118,14 +132,21 @@
       <h2>Weight goal (loss per week, 7-day avg)</h2>
       <div class="row"><label class="grow">Min kg/wk<input name="lossMin" type="number" inputmode="decimal" step="0.05"></label>
       <label class="grow">Max kg/wk<input name="lossMax" type="number" inputmode="decimal" step="0.05"></label></div>
-      <label>Plan file<select name="planFile"><option value="plan.json">plan.json</option><option value="plan.recomp.json">plan.recomp.json (from team/gym-plan.md)</option></select></label>
+      <label>Plan file<select name="planFile"><option value="plan.json">plan.json</option><option value="plan.recomp.json">plan.recomp.json (Recomp program)</option></select></label>
       <button class="primary">Save settings</button>
     </form>
     <div class="card"><h2>Exercises</h2><div id="exManage"></div></div>
+    <div class="card" id="backupCard"><h2>Backup</h2>
+      <p id="backupLast" class="small"></p>
+      <p class="muted small">One file with everything: workouts, treadmill sessions, meals, body weight, waist, sleep, water, steps, photo and deload dates, your exercise list and settings. On iPhone the share sheet opens: tap <b>Save to Files</b> and pick <b>iCloud Drive</b>.</p>
+      <div class="row"><button id="backupBtn" class="primary grow" type="button">Back up now</button><button id="restoreBtn" class="grow" type="button">Restore from backup</button></div>
+      <input type="file" id="restoreFile" accept="application/json,.json" hidden>
+      <div id="restorePreview" class="restore small" hidden></div>
+      <div id="backupMsg" class="small muted" role="status"></div>
+    </div>
     <div class="card"><h2>Data</h2>
-      <div class="row"><button id="exportBtn" class="grow">Export JSON</button><label class="btn grow">Import JSON<input type="file" id="importFile" accept="application/json,.json" hidden></label></div>
       <button id="wipeBtn" class="danger">Delete all data</button>
-      <p class="muted small">Data lives only on this device (localStorage). Export regularly as a backup.</p>
+      <p class="muted small">Data lives only on this device (localStorage), and iOS can clear it if you don't open the app for a while. Back up now and then.</p>
     </div>
   </section>
 </main>
